@@ -1,0 +1,11 @@
+a.blue, a.blue:visited, a.blue.active {
+    color: blue;
+}
+
+a.blue:hover {
+    color: darkgray;
+}
+
+.command {
+    color: darkgreen;
+}

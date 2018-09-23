@@ -16,13 +16,14 @@
 
 	<link rel="stylesheet" href="css/reveal.css">
 	<link rel="stylesheet" href="css/theme/serif.css" id="theme">
+	<link rel="stylesheet" href="edc-api.css">
 
 	<!-- Theme used for syntax highlighting of code -->
 	<link rel="stylesheet" href="lib/css/zenburn.css">
 
 	<!-- Printing and PDF exports -->
 	<script>
-        let link = document.createElement( 'link' );
+        var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
         link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
@@ -45,6 +46,17 @@
 			<h3>EDC 2018</h3>
 		</section>
 
+        <section>
+            <h2>Getting started</h2>
+            <pre style="padding:10px">
+Install Postman: <a href="https://www.getpostman.com/apps" class="blue">https://www.getpostman.com/apps</a><br>
+Install nodemon: <span class="command">npm install -g nodemon</span><br>
+Clone GitHub repo: <span class="command">git clone git@github.com:oyron/edc-api.git</span><br>
+Check out branch part1: <span class="command">git checkout part1</span><br>
+Download dependencies: <span class="command">npm install</span><br>
+Start server (from src directory): <span class="command">nodemon server.js</span></pre>
+        </section>
+
 		<section style="text-align: left;">
 			<h2>About me</h2>
 			<h3>Øyvind Rønne</h3>
@@ -59,22 +71,13 @@
 
 		<section style="text-align: left;">
 			<h2>Agenda</h2>
-			<p>
-				- API Basics<br>
-				- Design considerations<br>
-				- More topics...<br>
-				- Equinor API Strategy<br>
-			</p>
 		</section>
 
         <section>
             <section>
-                <h2>What is an API?</h2>
-                <p>
-                    Application Programming Interface<br>
-                </p>
+                <h2>API</h2>
             </section>
-            <section>
+<!--            <section>
                 <h2>Types of APIs</h2>
                 <ul>
                     <li>Operating system</li>
@@ -83,22 +86,13 @@
                     <li>Software library</li>
                     <li>Web API</li>
                 </ul>
-            </section>
+            </section>-->
             <section>
-                <h2>API Technical contract</h2>
-                <ul>
-                    <li>Message Exchange Pattern</li>
-                    <li>Data format</li>
-                    <li>Protocol</li>
-                </ul>
-            </section>
-            <section>
-                <h2>Message Exchange Pattern</h2>
+                <h3>Message Exchange Pattern (MEP)</h3>
                 <ul>
                     <li>Synchronous request/response</li>
-                    <li>Asynchronous request/acknowledge/poll</li>
-                    <li>Asynchronous request/acknowledge/callback</li>
-                    <li>Streaming / HTTP push</li>
+                    <li>Async request/acknowledge/poll</li>
+                    <li>Async request/acknowledge/callback</li>
                     <li>Publish-subscribe</li>
                 </ul>
             </section>
@@ -123,19 +117,82 @@
             </section>
             <section>
                 <h2>REST</h2>
+            </section>
+            <section>
+                <h3>Representation State Transfer</h3>
                 <ul>
-                    <li>JSON</li>
-                    <li>XML</li>
-                    <li>YAML</li>
-                    <li>Industry-specific formats (e.g. WITSML)</li>
+                    <li>Architectural style for web services</li>
+                    <li>Six constraints</li>
+                    <li>- Uniform Interface</li>
+                    <li>- Stateless</li>
+                    <li>- Cacheable</li>
+                    <li>- Client-Server</li>
+                    <li>- Layered System</li>
+                    <li>- Code on Demand (optional)</li>
                 </ul>
             </section>
             <section>
-                <h2>Hands on!</h2>
+                <H3>REST</H3>
+                <ul>
+                    <li>Synchronous request/response</li>
+                    <li>HTTP</li>
+                    <li>JSON most commonly</li>
+                    <li>Stateless (server contains no client state)</li>
+                </ul>
+            </section>
+            <section>
+                <H2>Interface</H2>
+                <ul>
+                    <li>HTTP methods (GET, PUT, POST, DELETE)</li>
+                    <li>URI (resource)</li>
+                    <li>HTTP response (status code and body)</li>
+                    <li>Request and response headers</li>
+                </ul>
+
+            </section>
+
+        </section>
+
+        <section>
+            <section>
+                <h2>Part 1</h2>
+                <a href="https://github.com/oyron/edc-api#part-1">https://github.com/oyron/edc-api#part-1</a>
+            </section>
+            <section>
+                <H3>Endpoint example</H3>
+                <pre><code data-trim>
+                    router.get('/books/:id', getBook);
+                </code></pre>
+                <pre><code data-trim>
+                    function getBook(req, res) {
+                        const bookId = Number(req.params.id);
+                        if (library.hasBookId(bookId)) {
+                            res.send(library.getBook(bookId));
+                        }
+                        else {
+                            res.status(404).send(`Book id ${bookId} not found`);
+                        }
+                    }
+                </code></pre>
             </section>
         </section>
 
-		<section style="text-align: left;">
+
+        <section>
+            <section>
+                <h2>OpenAPI Specification</h2>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Azure Deployment</h2>
+            </section>
+        </section>
+
+
+
+        <section style="text-align: left;">
 			<h1>THE END</h1>
 			<p>
 				- <a href="https://slides.com">Try the online editor</a> <br>
