@@ -84,16 +84,6 @@ Verify running server by accessing: <a href="http://localhost:3000" class="blue"
             <section>
                 <h2>API</h2>
             </section>
-<!--            <section>
-                <h2>Types of APIs</h2>
-                <ul>
-                    <li>Operating system</li>
-                    <li>Hardware</li>
-                    <li>Database</li>
-                    <li>Software library</li>
-                    <li>Web API</li>
-                </ul>
-            </section>-->
             <section>
                 <h3>Message Exchange Pattern (MEP)</h3>
                 <ul>
@@ -139,12 +129,12 @@ Verify running server by accessing: <a href="http://localhost:3000" class="blue"
                 </ul>
             </section>
             <section>
-                <H3>REST</H3>
+                <H3>REST key concepts</H3>
                 <ul>
                     <li>Synchronous request/response</li>
                     <li>HTTP</li>
-                    <li>JSON most commonly</li>
                     <li>Stateless (server contains no client state)</li>
+                    <li>JSON most commonly</li>
                 </ul>
             </section>
             <section>
@@ -155,7 +145,6 @@ Verify running server by accessing: <a href="http://localhost:3000" class="blue"
                     <li>HTTP response (status code and body)</li>
                     <li>Request and response headers</li>
                 </ul>
-
             </section>
 
         </section>
@@ -194,10 +183,41 @@ Verify running server by accessing: <a href="http://localhost:3000" class="blue"
             </section>
         </section>
 
-
         <section>
-            <H3>Part 2 - OpenAPI Specification</H3>
-            <a href="https://github.com/oyron/edc-api#part-2">https://github.com/oyron/edc-api#part-2</a>
+            <section>
+                <H3>Part 2 - OpenAPI Specification</H3>
+                <a href="https://github.com/oyron/edc-api#part-2">https://github.com/oyron/edc-api#part-2</a>
+            </section>
+            <section>
+                <H3>Endpoint example</H3>
+                <pre><code data-trim>
+                  '/books/{id}':
+                    get:
+                      tags:
+                        - library
+                      summary: Get book
+                      operationId: getBook
+                      produces:
+                        - application/json
+                        - text/html
+                      parameters:
+                        - name: id
+                          in: path
+                          description: Book id
+                          type: integer
+                          required: true
+                      responses:
+                        '200':
+                          description: OK
+                          schema:
+                            items:
+                              $ref: '#/definitions/Book'
+                        '400':
+                          description: Bad request
+                        '404':
+                          description: Not found
+                </code></pre>
+            </section>
         </section>
         <section>
             <H3>Part 3 - Azure Deployment</H3>
